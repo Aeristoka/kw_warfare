@@ -6,7 +6,12 @@
 		{{#if rollable}}data-kw-roll="{{statName}}"{{/if}}>
 			{{kw-number-format stat.value sign=rollable decimals=0}}
 		</span>
-		{{#if stat.bonus}}
+		{{#if (gt stat.bonus 0)}}
+			<span class="kw-warfare-stat-bonus {{#if (lt stat.bonus 0)}}kw-warfare-stat-bonus-negative{{/if}}" title="{{localize 'KW_WARFARE.Bonus'}}">
+				({{kw-number-format stat.bonus sign=true decimals=0}})
+			</span>
+		{{/if}}
+		{{#if (lt stat.bonus 0)}}
 			<span class="kw-warfare-stat-bonus {{#if (lt stat.bonus 0)}}kw-warfare-stat-bonus-negative{{/if}}" title="{{localize 'KW_WARFARE.Bonus'}}">
 				({{kw-number-format stat.bonus sign=true decimals=0}})
 			</span>
