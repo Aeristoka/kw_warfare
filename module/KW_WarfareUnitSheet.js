@@ -106,7 +106,7 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 					expanded: this._traitIsExpanded(item),
 					enriched: TextEditor.enrichHTML(item.data?.description?.value, {
 						secrets: data.owner,
-						entities: true,
+						documents: true,
 						links: true,
 						rolls: true,
 						rollData: this.actor.getRollData()
