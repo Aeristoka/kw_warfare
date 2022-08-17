@@ -1,3 +1,6 @@
+### [0.0.1](https://github.com/Aeristoka/kw_warfare/compare/v0.0.0...v0.0.1) (2022-08-17)
+
+
 ### [0.8.2](https://github.com/Mejari/kw_warfare/compare/v0.8.1...v0.8.2) (2021-09-11)
 
 Some major refactoring between 0.8.1 and 0.8.2 requires migrating data from the old structure to the new one. You can use this macro to select what units you want to migrate:
