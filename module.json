@@ -4,15 +4,20 @@
   "description": "A unit sheet for MCDM's warfare rules from Kingdoms & Warfare.",
   "authors": [
     {
+      "name": "Aeristoka",
+      "email": "jmgriffes@gmail.com",
+      "url": "https://github.com/Aeristoka"
+    },
+    {
       "name": "Mejari",
       "email": "mejari@gmail.com",
       "url": "https://github.com/Mejari"
     }
   ],
-  "url": "https://github.com/Mejari/kw_warfare",
+  "url": "https://github.com/Aeristoka/kw_warfare",
   "license": "LICENSE",
   "readme": "README.md",
-  "bugs": "https://github.com/Mejari/kw_warfare/issues",
+  "bugs": "https://github.com/Aeristoka/kw_warfare/issues",
   "changelog": "CHANGELOG.md",
   "flags": {},
   "version": "0.8.4",
@@ -47,7 +52,7 @@
   ],
   "dependencies": [],
   "socket": false,
-  "manifest": "https://raw.githubusercontent.com/Mejari/kw_warfare/main/module.json",
+  "manifest": "https://raw.githubusercontent.com/Aeristoka/kw_warfare/main/module.json",
   "download": "https://github.com/Aeristoka/kw_warfare/releases/download/v0.8.4/module.zip",
   "protected": false,
   "coreTranslation": false,
