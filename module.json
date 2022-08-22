@@ -15,7 +15,7 @@
   "bugs": "https://github.com/Mejari/kw_warfare/issues",
   "changelog": "CHANGELOG.md",
   "flags": {},
-  "version": "0.0.1",
+  "version": "0.8.4",
   "minimumCoreVersion": "9",
   "compatibleCoreVersion": "9",
   "scripts": [],
@@ -48,7 +48,7 @@
   "dependencies": [],
   "socket": false,
   "manifest": "https://raw.githubusercontent.com/Mejari/kw_warfare/main/module.json",
-  "download": "https://github.com/Aeristoka/kw_warfare/releases/download/v0.0.1/module.zip",
+  "download": "https://github.com/Aeristoka/kw_warfare/releases/download/v0.8.4/module.zip",
   "protected": false,
   "coreTranslation": false,
   "library": false
