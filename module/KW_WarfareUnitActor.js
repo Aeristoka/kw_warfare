@@ -147,10 +147,5 @@ export function cleanDetailTraitsOnUpdate(updatedDetails, actor) {
 }
 
 function _cleanDetails(actor, detailName, detailType, newValue = '0000') {
-	const existingTrait = actor.items.find((i) => {
-		return i.data.data.requirements === detailType && i.name !== newValue;
-	})
-	if (existingTrait) {
-		actor.items.delete(existingTrait.id)
-	}
+	actor.deleteEmbeddedDocuments("Item", actor.items.filter(item => item.data.data.requirements === detailType && item.name !== newValue).map(item => item.id));
 }
