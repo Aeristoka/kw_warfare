@@ -115,6 +115,7 @@ export function dropTrait(itemInfo) {
 
 	if (requirements === KW_ANCESTRY) {
 		this.setFlag('kw-warfare', 'unit.ancestry', item.name);
+		_cleanDetails(this, 'ancestry', KW_ANCESTRY);
 	} else if (requirements === KW_EQUIPMENT) {
 		this.setFlag('kw-warfare', 'unit.equipment', item.name);
 		_cleanDetails(this, 'equipment', KW_EQUIPMENT);

@@ -58,9 +58,9 @@ Hooks.on('preUpdateActor', (actor, updatedFlags) => {
 	}
 
 	//if manually entering an experience/ancestry/equipment/type delete old trait if exists
-	if (updatedFlags.flags && updatedFlags.flags['kw-warfare']?.unit) {
-		cleanDetailTraitsOnUpdate(updatedFlags.flags['kw-warfare'].unit, actor);
-	}
+	// if (updatedFlags.flags && updatedFlags.flags['kw-warfare']?.unit) {
+	// 	cleanDetailTraitsOnUpdate(updatedFlags.flags['kw-warfare'].unit, actor);
+	// }
 });
 
 
