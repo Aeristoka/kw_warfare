@@ -21,8 +21,8 @@
   "changelog": "CHANGELOG.md",
   "flags": {},
   "version": "0.8.5",
-  "minimumCoreVersion": "9",
-  "compatibleCoreVersion": "9",
+  "minimumCoreVersion": "10",
+  "compatibleCoreVersion": "10",
   "scripts": [],
   "esmodules": [
     "module/main.js"
