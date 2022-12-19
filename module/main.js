@@ -51,7 +51,7 @@ Hooks.on('preUpdateActor', (actor, updatedFlags) => {
 	//If updating the max-hp, reduce current hp to that max if greater than the new max
 	if (updatedFlags.data?.attributes?.hp?.max) {
 		const newMax = updatedFlags.data.attributes.hp.max;
-		const currentHp = actor.data.data.attributes.hp.value;
+		const currentHp = actor.data.system.attributes.hp.value;
 		if (currentHp > newMax) {
 			updatedFlags.data.attributes.hp.value = newMax;
 		}
