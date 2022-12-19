@@ -20,7 +20,7 @@
   "bugs": "https://github.com/Aeristoka/kw_warfare/issues",
   "changelog": "CHANGELOG.md",
   "flags": {},
-  "version": "0.9.0",
+  "version": "0.8.11-v10-compat.0",
   "minimumCoreVersion": "10",
   "compatibleCoreVersion": "10",
   "scripts": [],
@@ -53,7 +53,7 @@
   "dependencies": [],
   "socket": false,
   "manifest": "https://raw.githubusercontent.com/Aeristoka/kw_warfare/main/module.json",
-  "download": "https://github.com/Aeristoka/kw_warfare/releases/download/v0.8.5/module.zip",
+  "download": "https://github.com/Aeristoka/kw_warfare/releases/download/v0.8.11-v10-compat.0/module.zip",
   "protected": false,
   "coreTranslation": false,
   "library": false
