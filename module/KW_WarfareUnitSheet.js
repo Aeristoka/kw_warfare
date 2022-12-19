@@ -1,4 +1,3 @@
-import ActorSheet5e from '../../../systems/dnd5e/module/actor/sheets/base.js';
 import {KW_ANCESTRY, KW_EQUIPMENT, KW_EXPERIENCE, KW_TYPE} from "./KW_WarfareUnitActor.js";
 
 export const DEFAULT_UNIT_DATA = {
@@ -41,7 +40,7 @@ export const DEFAULT_UNIT_DATA = {
 	}
 };
 
-export default class KW_WarfareUnitSheet extends ActorSheet5e {
+export default class KW_WarfareUnitSheet extends dnd5e.applications.actor.ActorSheet5e {
 
 	static get defaultOptions() {
 		return mergeObject(super.defaultOptions, {
@@ -73,8 +72,8 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 		html.find('.kw-warfare-trait-info-button').click(this._onShowTraitInfo.bind(this));
 	}
 
-	getData() {
-		const data = super.getData();
+	async getData() {
+		const data = await super.getData();
 		data.unit = duplicate(this.actor.getFlag('kw-warfare', 'unit') || DEFAULT_UNIT_DATA);
 
 		data.unit.traits = [];
@@ -174,7 +173,7 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 
 	_onAddItem(evt) {
 		const dataset = evt.currentTarget.dataset;
-		const data = {
+		const system = {
 			activation: {
 				cost: dataset.cost ? Number(dataset.cost) : null,
 				type: dataset.type || ""
@@ -182,9 +181,9 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 		};
 
 		this.actor.createEmbeddedDocuments('Item', [{
+			system,
 			type: 'feat',
-			name: game.i18n.localize('KW_WARFARE.NewTrait'),
-			data: data
+			name: game.i18n.localize('KW_WARFARE.NewTrait')
 		}], {renderSheet: true});
 	}
 

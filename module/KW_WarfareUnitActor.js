@@ -1,6 +1,3 @@
-import Actor5e from '../../../systems/dnd5e/module/actor/entity.js';
-import {d20Roll} from '../../../systems/dnd5e/module/dice.js';
-
 const OWNER = CONST.ENTITY_PERMISSIONS.OWNER;
 
 export const KW_ANCESTRY = 'Ancestry';
@@ -16,7 +13,7 @@ const ATTRIBUTE_TO_DISPLAY_MAP = {
 };
 
 export default function extendActor () {
-
+	const Actor5e = dnd5e.documents.Actor5e;
 	Actor5e.prototype.rollKWUnitAttribute = function (attr, options = {}) {
 		const stat = this.getFlag('kw-warfare', `unit.stats.${attr}`);
 		if (!stat) {
@@ -54,7 +51,7 @@ export default function extendActor () {
 			}
 		}
 
-		return d20Roll(rollData);
+		return dnd5e.dice.d20Roll(rollData);
 	};
 }
 
