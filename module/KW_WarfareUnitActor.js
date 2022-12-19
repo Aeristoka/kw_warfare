@@ -1,6 +1,3 @@
-import Actor5e from '../../../systems/dnd5e/module/actor/entity.js';
-import {d20Roll} from '../../../systems/dnd5e/module/dice.js';
-
 const OWNER = CONST.ENTITY_PERMISSIONS.OWNER;
 
 export const KW_ANCESTRY = 'Ancestry';
@@ -16,7 +13,7 @@ const ATTRIBUTE_TO_DISPLAY_MAP = {
 };
 
 export default function extendActor () {
-
+	const Actor5e = dnd5e.documents.Actor5e;
 	Actor5e.prototype.rollKWUnitAttribute = function (attr, options = {}) {
 		const stat = this.getFlag('kw-warfare', `unit.stats.${attr}`);
 		if (!stat) {
@@ -25,12 +22,12 @@ export default function extendActor () {
 		const {value, bonus, advantage, disadvantage } = stat;
 
 		const parts = ['@mod'];
-		const data = {
+		const system = {
 			mod: value,
 		};
 
 		if(bonus && bonus !== 0) {
-			data.checkBonus = bonus;
+			system.checkBonus = bonus;
 			parts.push('@checkBonus');
 		}
 
@@ -54,7 +51,7 @@ export default function extendActor () {
 			}
 		}
 
-		return d20Roll(rollData);
+		return dnd5e.dice.d20Roll(rollData);
 	};
 }
 
@@ -108,7 +105,7 @@ export function dropTrait(itemInfo) {
 		return;
 	}
 
-	const requirements = item.data.data.requirements;
+	const requirements = item.system.data.requirements;
 	if (!requirements) {
 		return;
 	}
@@ -147,5 +144,5 @@ export function cleanDetailTraitsOnUpdate(updatedDetails, actor) {
 }
 
 function _cleanDetails(actor, detailName, detailType, newValue = '0000') {
-	actor.deleteEmbeddedDocuments("Item", actor.items.filter(item => item.data.data.requirements === detailType && item.name !== newValue).map(item => item.id));
+	actor.deleteEmbeddedDocuments("Item", actor.items.filter(item => item.system.data.requirements === detailType && item.name !== newValue).map(item => item.id));
 }

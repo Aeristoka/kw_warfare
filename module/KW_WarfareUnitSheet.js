@@ -1,4 +1,3 @@
-import ActorSheet5e from '../../../systems/dnd5e/module/actor/sheets/base.js';
 import {KW_ANCESTRY, KW_EQUIPMENT, KW_EXPERIENCE, KW_TYPE} from "./KW_WarfareUnitActor.js";
 
 export const DEFAULT_UNIT_DATA = {
@@ -41,7 +40,7 @@ export const DEFAULT_UNIT_DATA = {
 	}
 };
 
-export default class KW_WarfareUnitSheet extends ActorSheet5e {
+export default class KW_WarfareUnitSheet extends dnd5e.applications.actor.ActorSheet5e {
 
 	static get defaultOptions() {
 		return mergeObject(super.defaultOptions, {
@@ -73,14 +72,14 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 		html.find('.kw-warfare-trait-info-button').click(this._onShowTraitInfo.bind(this));
 	}
 
-	getData() {
-		const data = super.getData();
+	async getData() {
+		const data = await super.getData();
 		data.unit = duplicate(this.actor.getFlag('kw-warfare', 'unit') || DEFAULT_UNIT_DATA);
 
 		data.unit.traits = [];
 
 		for (const item of data.items) {
-			const requirements = item.data.requirements;
+			const requirements = item.system.requirements;
 			if (requirements) {
 				if (requirements === KW_ANCESTRY) {
 					data.unit.ancestry = item.name;
@@ -101,10 +100,10 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 			data.unit.traits.push({
 				id: item._id,
 				name: item.name,
-				activation: item.data?.activation?.type || 'none',
+				activation: item.system?.activation?.type || 'none',
 				description: {
 					expanded: this._traitIsExpanded(item),
-					enriched: TextEditor.enrichHTML(item.data?.description?.value, {
+					enriched: TextEditor.enrichHTML(item.system?.description?.value, {
 						secrets: data.owner,
 						documents: true,
 						links: true,
@@ -174,7 +173,7 @@ export default class KW_WarfareUnitSheet extends ActorSheet5e {
 
 	_onAddItem(evt) {
 		const dataset = evt.currentTarget.dataset;
-		const data = {
+		const system = {
 			activation: {
 				cost: dataset.cost ? Number(dataset.cost) : null,
 				type: dataset.type || ""
