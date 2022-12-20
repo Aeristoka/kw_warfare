@@ -1,3 +1,6 @@
+### [0.8.6](https://github.com/Aeristoka/kw_warfare/compare/v0.8.5...v0.8.6) (2022-12-20)
+
+
 ### [0.8.11-v10-compat.0](https://github.com/Aeristoka/kw_warfare/compare/v0.8.5...v0.8.11-v10-compat.0) (2022-12-19)
 
 
