@@ -1,7 +1,4 @@
-import Actor5e from '../../../systems/dnd5e/module/actor/entity.js';
-import {d20Roll} from '../../../systems/dnd5e/module/dice.js';
-
-const OWNER = CONST.ENTITY_PERMISSIONS.OWNER;
+const OWNER = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER;
 
 export const KW_ANCESTRY = 'Ancestry';
 export const KW_EXPERIENCE = 'Experience';
@@ -16,7 +13,7 @@ const ATTRIBUTE_TO_DISPLAY_MAP = {
 };
 
 export default function extendActor () {
-
+	const Actor5e = dnd5e.documents.Actor5e;
 	Actor5e.prototype.rollKWUnitAttribute = function (attr, options = {}) {
 		const stat = this.getFlag('kw-warfare', `unit.stats.${attr}`);
 		if (!stat) {
@@ -54,14 +51,14 @@ export default function extendActor () {
 			}
 		}
 
-		return d20Roll(rollData);
+		return dnd5e.dice.d20Roll(rollData);
 	};
 }
 
 
 export function dropActor(itemInfo, kwWarfareSheet) {
 	//set commander
-	const droppedActor = game.actors.get(itemInfo.id);
+	const droppedActor = game.actors.get(itemInfo.uuid.replace('Item.',''));
 	if (!droppedActor || droppedActor.sheet.constructor.name === 'KW_WarfareUnitSheet') {
 		return;
 	}
@@ -103,12 +100,12 @@ export function dropActor(itemInfo, kwWarfareSheet) {
 export function dropTrait(itemInfo) {
 	//overwrite existing experience/ancestry/equipment/type if already exist
 	//delete old trait. clear out text value.
-	const item = game.items.get(itemInfo.id);
+	const item = game.items.get(itemInfo.uuid.replace('Item.',''));
 	if (!item) {
 		return;
 	}
 
-	const requirements = item.data.data.requirements;
+	const requirements = item.system.requirements;
 	if (!requirements) {
 		return;
 	}
@@ -147,5 +144,5 @@ export function cleanDetailTraitsOnUpdate(updatedDetails, actor) {
 }
 
 function _cleanDetails(actor, detailName, detailType, newValue = '0000') {
-	actor.deleteEmbeddedDocuments("Item", actor.items.filter(item => item.data.data.requirements === detailType && item.name !== newValue).map(item => item.id));
+	actor.deleteEmbeddedDocuments("Item", actor.items.filter(item => item.system.requirements === detailType && item.name !== newValue).map(item => item.id));
 }
