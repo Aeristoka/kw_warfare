@@ -20,9 +20,14 @@
   "bugs": "https://github.com/Aeristoka/kw_warfare/issues",
   "changelog": "CHANGELOG.md",
   "flags": {},
-  "version": "0.8.6",
+  "version": "0.8.7",
   "minimumCoreVersion": "10",
-  "compatibleCoreVersion": "10",
+  "compatibleCoreVersion": "11",
+  "compatibility": {
+      "minimum": 10,
+      "verified": 11
+
+  },
   "scripts": [],
   "esmodules": [
     "module/main.js"
