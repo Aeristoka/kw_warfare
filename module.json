@@ -24,9 +24,8 @@
   "minimumCoreVersion": "10",
   "compatibleCoreVersion": "11",
   "compatibility": {
-      "minimum": 10,
-      "verified": 11
-
+    "minimum": 10,
+    "verified": 11
   },
   "scripts": [],
   "esmodules": [
@@ -58,7 +57,7 @@
   "dependencies": [],
   "socket": false,
   "manifest": "https://raw.githubusercontent.com/Aeristoka/kw_warfare/main/module.json",
-  "download": "https://github.com/Aeristoka/kw_warfare/releases/download/v0.8.6/module.zip",
+  "download": "https://github.com/Aeristoka/kw_warfare/releases/download/v0.8.7/module.zip",
   "protected": false,
   "coreTranslation": false,
   "library": false
